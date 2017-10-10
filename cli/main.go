@@ -21,5 +21,8 @@ func init() {
 
 func main() {
 	flag.Parse()
-	println(passgen.RandomString(length, passgen.GetAlpha(lower, upper, puncts, "["+ex+"]")))
+	if ex == "" {
+		ex = string('\x00')
+	}
+	println(passgen.RandomString(length, passgen.GetAlpha(lower, upper, puncts, ex)))
 }
